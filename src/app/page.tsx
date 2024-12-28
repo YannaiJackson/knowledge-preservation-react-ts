@@ -18,7 +18,7 @@ export default function Home() {
 
 
   return (
-    <div className="bg-white h-screen w-screen">
+    <div className="bg-blue-300 h-screen w-screen">
 
     </div>
   );
