@@ -18,8 +18,10 @@ export default function Home() {
 
 
   return (
-    <div className="bg-blue-300 h-screen w-screen">
-
+    <div className="h-full w-full">
+        <p className='flex flex-center justify-center p-10'>
+            Hi!<br/>My name is Yannai Jackson
+        </p>
     </div>
   );
 }

@@ -1,16 +1,14 @@
 /**
- * This file represents the root layout of the application.
- * It includes the global CSS import, the Navbar component, and the HTML structure.
+ * Root layout of the application with Sidebar and Header integration.
  */
 
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from '@/components/Navbar';
-
+import Navbar from "@/components/Navbar";
+import Header from "@/components/Header"; // Header component
 
 /**
  * Metadata for the application.
- * This is used by Next.js to generate the HTML head section.
  */
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,9 +17,7 @@ export const metadata: Metadata = {
 
 /**
  * RootLayout component.
- * This component wraps the application's content and provides a consistent layout.
- *
- * @param children - The React children to be rendered within the layout.
+ * Provides a consistent layout with a Sidebar, Header, and Content area.
  */
 export default function RootLayout({
   children,
@@ -30,9 +26,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='overflow-hidden'>
-        <Navbar />
-        {children}
+      <body className="h-screen overflow-hidden flex flex-col">
+        {/* Header (spans full width) */}
+        <Header />
+
+        <div className="flex flex-1">
+          {/* Navbar below Header */}
+          <Navbar />
+
+          {/* Main Content Area */}
+          <main className="flex-1 overflow-y-auto">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

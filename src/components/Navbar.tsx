@@ -1,70 +1,53 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
+/**
+ * Navbar Component
+ * Represents a vertical navigation menu for the application.
+ */
 const Navbar: React.FC = () => {
-  // Define the state type for 'active' as a string (name of the active page)
-  const [active, setActive] = useState<string>("Home");
-
+  const [active, setActive] = useState<string>("About");
   const router = useRouter();
 
-  // Type the function parameter as a string (page name)
+  /**
+   * Handles navigation and updates the active menu item.
+   * @param page - The name of the page to navigate to.
+   */
   const handleNavigation = (page: string) => {
     setActive(page);
-    if (page === "Home") {
-      router.push("/"); // Navigate to the home page
+    if (page === "About") {
+      router.push("/");
     } else {
-      router.push(`/${page.toLowerCase()}`); // Navigate to respective page
+      router.push(`/${page.toLowerCase()}`);
     }
   };
 
   return (
-    <header className="bg-white text-black px-12">
-      <div className="px-8 py-4 flex justify-between items-center">
-        <div className="flex">
-        {/* Logo and Title */}
-        <div className="text-4xl font-bold flex gap-4">
-            <Image src='/file.svg' alt="Logo" width={50} height={50} className="w-10 h-10" />
-            <span className="text-black text-3xl text-blue-700">Jackson</span>
-        </div>
-        <div className="flex space-x-6 px-20">
-          {["Languages", "Technologies", "Services", "Other"].map((item) => (
-            <button
-              key={item}
-              onClick={() => handleNavigation(item)}
-              className={`relative py-2 px-2 text-black focus:outline-none border-b-2 ${
-                active === item
-                  ? "border-black"
-                  : "border-transparent hover:border-black"
-              }`}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-        </div>
+    <aside className="h-full w-64 bg-white text-black shadow-lg">
+      <div className="flex flex-col h-full pt-4">
 
-        {/* Navbar Links */}
-        <nav>
-          <div className="flex space-x-6">
-            {["Home", "About", "Contact"].map((item) => (
-              <button
-                key={item}
-                onClick={() => handleNavigation(item)}
-                className={`relative py-2 px-2 text-black focus:outline-none border-b-2 ${
-                  active === item
-                    ? "border-black"
-                    : "border-transparent hover:border-black"
-                }`}
-              >
-                {item}
-              </button>
+        {/* Main Navigation */}
+        <nav className="flex-1 p-4">
+          <ul className="space-y-4">
+            {["About", "Projects", "Technologies"].map((item) => (
+              <li key={item}>
+                <button
+                  onClick={() => handleNavigation(item)}
+                  className={`w-full text-left py-2 px-4 rounded-md focus:outline-none ${
+                    active === item
+                      ? "bg-black text-white"
+                      : "hover:bg-gray-200"
+                  }`}
+                >
+                  {item}
+                </button>
+              </li>
             ))}
-          </div>
+          </ul>
         </nav>
       </div>
-    </header>
+    </aside>
   );
 };
 

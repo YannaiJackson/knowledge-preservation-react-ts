@@ -18,12 +18,10 @@ export default function Home() {
 
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+    <div className="w-full h-full flex items-center justify-center">
         <span> PHONE: +972 58 6922403 </span><br />
         <span> EMAIL: yannaismj@gmail.com </span><br />
         <span> LOCATION: Central Israel </span><br />
-      </div>
     </div>
   );
 }
